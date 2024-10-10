@@ -58,6 +58,8 @@ void cg::renderer::rasterization_renderer::render()
 		rasterizer->draw(model->get_index_buffers()[shape_id]->count(), 0);
 	}
 
+	rasterizer->apply_black_and_white_film_filter();
+
 	auto end = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> duration = end - start;
 	std::cout << "Rasterization time " << duration.count() << "  ms\n";

@@ -33,6 +33,7 @@ namespace cg::renderer
 		void set_viewport(size_t in_width, size_t in_height);
 
 		void draw(size_t num_vertexes, size_t vertex_offset);
+		void apply_black_and_white_film_filter();
 
 		std::function<std::pair<float4, VB>(float4 vertex, VB vertex_data)> vertex_shader;
 		std::function<cg::color(const VB& vertex_data, const float z)> pixel_shader;
@@ -195,6 +196,28 @@ namespace cg::renderer
 		return depth_buffer->item(x, y) > z;
 	}
 
+	template<typename VB, typename RT> // CREATIVE TASK
+	inline void rasterizer<VB, RT>::apply_black_and_white_film_filter()
+	{
+    if (!render_target)
+        return;
+
+    for (size_t y = 0; y < height; ++y)
+    {
+        for (size_t x = 0; x < width; ++x)
+        {
+            auto& pixel = render_target->item(x, y);
+
+            float gray_value = 0.299f * pixel.r + 0.587f * pixel.g + 0.114f * pixel.b;
+
+            float noise = (std::rand() % 30) - 15;
+
+            gray_value = std::clamp(gray_value + noise, 0.0f, 255.0f);
+
+            pixel.r = pixel.g = pixel.b = static_cast<uint8_t>(gray_value);
+        }
+    }
+}
 	
 
 }// namespace cg::renderer

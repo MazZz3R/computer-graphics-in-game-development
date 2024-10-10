@@ -25,6 +25,14 @@ cd Build
 cmake ..
 ```
 
+
+### Creative Task: Black and White Film Filter
+
+The `apply_black_and_white_film_filter` function transforms each pixel in the render target to create a black-and-white film effect. Unlike simple grayscale conversion, this filter adds a slight grainy noise to each pixel, mimicking the look of vintage film. The noise effect introduces subtle variations, giving the image an authentic, aged feel, reminiscent of classic movies.
+
+#### Example:
+![Black and White Film Effect](result.png)
+
 ## Third-party tools and data
 
 - [STB](https://github.com/nothings/stb) by Sean Barrett (Public Domain)
