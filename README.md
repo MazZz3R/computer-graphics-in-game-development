@@ -33,6 +33,22 @@ The `apply_black_and_white_film_filter` function transforms each pixel in the re
 #### Example:
 ![Black and White Film Effect](result.png)
 
+### Creative Task: Raytracing
+
+The task implements ray tracing and modifies the `closest_hit_shader` to support Monte Carlo light tracing.
+#### Result without Monte Carlo Light:
+![result](result_raytracing.png)
+
+#### Result with Monte Carlo Light
+- raytracing depth = 3
+- accumulation num = 16
+![3_16](3_16.png)
+
+(I was waiting about 0.5h...)
+- raytracing depth = 3
+- accumulation num = 128
+- ![3_128](3_128.png)
+
 ## Third-party tools and data
 
 - [STB](https://github.com/nothings/stb) by Sean Barrett (Public Domain)
